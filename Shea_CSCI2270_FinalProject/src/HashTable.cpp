@@ -147,24 +147,30 @@ void HashTable::deleteContact(std::string name)
 {
     int index=hashSum(name);
     HashElem *tmp=hashTable[index];
-    if (hashTable[index]->name==name)
-        hashTable[index]=hashTable[index]->next;
-    else
-    {
-        tmp=tmp->next;
-        while (tmp!=NULL)
+    if(tmp != NULL){ //added this because I was getting a seg fault when hashTable[index] was null
+        if (hashTable[index]->name==name)
+            hashTable[index]=hashTable[index]->next;
+        else
         {
-            if (tmp->name==name)
+            tmp=tmp->next;
+            while (tmp!=NULL)
             {
-                tmp->previous->next=tmp->next;
-                tmp->next->previous=tmp->previous;
-                break;
+                if (tmp->name==name)
+                {
+                    tmp->previous->next=tmp->next;
+                    tmp->next->previous=tmp->previous;
+                    break;
+                }
+                else
+                    tmp=tmp->next;
             }
-            else
-                tmp=tmp->next;
         }
+        delete tmp;
+        cout<<name<<" was deleted."<<endl; //moved from main function to here
+        }
+    else{
+        cout<<"Contact not found."<<endl; //if contact doesn't exist
     }
-    delete tmp;
 }
 
 void HashTable::printContacts(int index)
@@ -175,7 +181,8 @@ void HashTable::printContacts(int index)
         HashElem *tmp=hashTable[i];
         while (tmp!=NULL)
         {
-            cout<<"- "<<tmp->name<<endl;
+            //thought it would be useful to include info when printing contacts, in case you had two people with the same name
+            cout<<"- "<<tmp->name<<" "<<tmp->phoneNum<<" "<<tmp->email<<endl;
             tmp=tmp->next;
             flag=1;
         }
