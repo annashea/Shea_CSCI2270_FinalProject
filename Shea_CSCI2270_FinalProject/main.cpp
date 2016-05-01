@@ -80,7 +80,6 @@ int main()
             if (input=="Y")
             {
                 h.deleteContact(name);
-                cout<<name<<" was deleted."<<endl;
 
             }
         }
