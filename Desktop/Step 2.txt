@@ -1,0 +1,40 @@
+Step 2
+diff fruitsOld.txt fruitsNew.txt
+removed-cranberry,Nectarine, Prickly Pear
+added-Jackfruit
+<,> -means if the output was added or removed
+diff -c fruitsOld.txt fruitsNew.txt
+formed list
+
+Step 3
+wc -l testPasswd.txt
+15 lines
+wc -c testPasswd.txt
+692 characters
+
+Step 4
+cut -f 1 -d ':' testPasswd.txt
+cut -f 2,4 -d ' ' grades.txt
+Step 5
+cut -f 4 -d ':' testPasswd.txt|sort|uniq
+cut -f 4 -d ':' testPasswd.txt|sort|uniq > newFile.txt
+grep '^[mws]' testPasswd.txt | cut -f 1,6 -d : --output-delimiter=" "
+
+Step 6
+sed 's/[a-zA-Z]//g' leetSpeak.txt
+sed 's/[0-9]//g' leetSpeak.txt
+sed 's/[0-9]/_/g' leetSpeak.txt
+sed 's/0/o/g; s/4/a/g; s/3/e/g; s/5/s/g; s/7/t/g; s/1/i/g' leetSpeak.txt
+save the output to file
+
+Step 7
+awk ' {for(i=0;i<=NF;i++) t+=$i; print t/5*100; t=0}; {print $1,$2}' grades.txt
+awk '{count=count+$NF}END{print count/7*100}' grades.txt
+
+Step 8
+grep -c ^ regex_practice_data.txt
+grep '303-' regex* | wc -l
+grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" regex_practice_data.txt
+grep -E -o "\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.gov" regex_practice_data.txt
+grep -E -o "\b[A-Za-z.A-Za-Z]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b" regex_practice_data.txt | wc -l
+

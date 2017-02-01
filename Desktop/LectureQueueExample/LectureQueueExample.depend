@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1428010035 source:/home/user/Dropbox/CSCI2270/Spring2015/LectureQueueExample/main.cpp
+	<iostream>
+	<queue>
+
+1428010454 source:/home/user/Desktop/LectureQueueExample/main.cpp
+	<iostream>
+	<queue>
+
